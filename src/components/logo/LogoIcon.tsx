@@ -1,27 +1,15 @@
-// material-ui
-import { useTheme } from '@mui/material/styles';
+import logo from 'assets/images/logo-panamalifters-notbg.png';
 
-/**
- * if you want to use image instead of <svg> uncomment following.
- *
- * import logoIconDark from 'assets/images/logo-icon-dark.svg';
- * import logoIcon from 'assets/images/logo-icon.svg';
- * import { ThemeMode } from 'config';
- *
- */
-
-// ==============================|| LOGO ICON SVG ||============================== //
-
-export default function LogoIcon() {
-  const theme = useTheme();
-
+export default function LogoIcon({ reverse }: { reverse?: boolean }) {
   return (
-    /**
-     * if you want to use image instead of svg uncomment following, and comment out <svg> element.
-     *
-     * <img src={theme.palette.mode === ThemeMode.DARK ? logoIconDark : logoIcon} alt="Mantis" width="100" />
-     *
-     */
-    <img src="src\assets\images\logo-panamalifters-notbg.png" alt="Mantis" width="100" />
+    <img
+      src={logo}
+      alt="Mantis"
+      width="200"
+      style={{
+        filter: reverse ? 'invert(1)' : 'none',
+        transition: 'filter 0.3s ease-in-out'
+      }}
+    />
   );
 }
