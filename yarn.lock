@@ -2321,7 +2321,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/private-theming@npm:^5.17.1":
+"@mui/private-theming@npm:^5.11.0, @mui/private-theming@npm:^5.17.1":
   version: 5.17.1
   resolution: "@mui/private-theming@npm:5.17.1"
   dependencies:
@@ -2338,7 +2338,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/styled-engine@npm:^5.16.14":
+"@mui/styled-engine@npm:^5.11.0, @mui/styled-engine@npm:^5.16.14":
   version: 5.16.14
   resolution: "@mui/styled-engine@npm:5.16.14"
   dependencies:
@@ -2359,7 +2359,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@mui/system@npm:^5.11.0, @mui/system@npm:^5.16.6, @mui/system@npm:^5.17.1":
+"@mui/system@npm:5.11.0":
+  version: 5.11.0
+  resolution: "@mui/system@npm:5.11.0"
+  dependencies:
+    "@babel/runtime": "npm:^7.20.6"
+    "@mui/private-theming": "npm:^5.11.0"
+    "@mui/styled-engine": "npm:^5.11.0"
+    "@mui/types": "npm:^7.2.3"
+    "@mui/utils": "npm:^5.11.0"
+    clsx: "npm:^1.2.1"
+    csstype: "npm:^3.1.1"
+    prop-types: "npm:^15.8.1"
+  peerDependencies:
+    "@emotion/react": ^11.5.0
+    "@emotion/styled": ^11.3.0
+    "@types/react": ^17.0.0 || ^18.0.0
+    react: ^17.0.0 || ^18.0.0
+  peerDependenciesMeta:
+    "@emotion/react":
+      optional: true
+    "@emotion/styled":
+      optional: true
+    "@types/react":
+      optional: true
+  checksum: 10c0/9bc04ce04468cde4ca82eb0362c3449fc9259b6f7e524a771c265dfabb13e132aa7ba027bf9ebfb395023b334578922072681cc310c29e298db8aab9688546be
+  languageName: node
+  linkType: hard
+
+"@mui/system@npm:^5.11.0, @mui/system@npm:^5.17.1":
   version: 5.17.1
   resolution: "@mui/system@npm:5.17.1"
   dependencies:
@@ -6489,7 +6517,7 @@ __metadata:
     "@mui/icons-material": "npm:5.11.0"
     "@mui/lab": "npm:^5.0.0-alpha.173"
     "@mui/material": "npm:5.11.0"
-    "@mui/system": "npm:^5.16.6"
+    "@mui/system": "npm:5.11.0"
     "@svgr/webpack": "npm:^8.1.0"
     "@testing-library/jest-dom": "npm:^6.4.8"
     "@types/chance": "npm:^1.1.6"
