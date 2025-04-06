@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { Box, Typography, Grid, Paper, MenuItem, FormControl, InputLabel, Select } from '@mui/material';
-import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
-import GroupsIcon from '@mui/icons-material/Groups';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import FemaleIcon from '@mui/icons-material/Female';
-import MaleIcon from '@mui/icons-material/Male';
+
+import { UsergroupAddOutlined, TeamOutlined, CrownOutlined, TrophyOutlined, WomanOutlined, ManOutlined } from '@ant-design/icons';
 
 import atletasData from 'data/json/perfilatletas.json';
 import equiposData from 'data/json/equipospowerlifting.json';
@@ -63,35 +59,35 @@ const EstadisticasGenerales = () => {
       <Grid container spacing={3} justifyContent="center">
         <Grid item xs={12} sm={6} md={4}>
           <Paper elevation={3} sx={{ p: 3, textAlign: 'center' }}>
-            <PeopleAltIcon fontSize="large" color="primary" />
+            <UsergroupAddOutlined style={{ fontSize: 36, color: '#1976d2' }} />
             <Typography variant="h6">Total de Atletas</Typography>
             <Typography variant="h5">{totalAtletas}</Typography>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Paper elevation={3} sx={{ p: 3, textAlign: 'center' }}>
-            <GroupsIcon fontSize="large" color="secondary" />
+            <TeamOutlined style={{ fontSize: 36, color: '#9c27b0' }} />
             <Typography variant="h6">Equipos Registrados</Typography>
             <Typography variant="h5">{totalequipos}</Typography>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Paper elevation={3} sx={{ p: 3, textAlign: 'center' }}>
-            <EmojiEventsIcon fontSize="large" color="success" />
+            <CrownOutlined style={{ fontSize: 36, color: '#2e7d32' }} />
             <Typography variant="h6">Mejor IPF Points</Typography>
             <Typography variant="h5">{mejorIPF.toFixed(2)}</Typography>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Paper elevation={3} sx={{ p: 3, textAlign: 'center' }}>
-            <MaleIcon fontSize="large" sx={{ color: '#00aae4' }} />
+            <ManOutlined style={{ fontSize: 36, color: '#00aae4' }} />
             <Typography variant="h6">Categoría Masculina</Typography>
             <Typography variant="h5">{totalMasculino}</Typography>
           </Paper>
         </Grid>
         <Grid item xs={12} sm={6} md={4}>
           <Paper elevation={3} sx={{ p: 3, textAlign: 'center' }}>
-            <FemaleIcon fontSize="large" sx={{ color: 'pink' }} />
+            <WomanOutlined style={{ fontSize: 36, color: 'pink' }} />
             <Typography variant="h6">Categoría Femenina</Typography>
             <Typography variant="h5">{totalFemenino}</Typography>
           </Paper>
@@ -142,7 +138,7 @@ const EstadisticasGenerales = () => {
           <Grid container spacing={3} justifyContent="center">
             <Grid item xs={12} sm={4}>
               <Paper elevation={3} sx={{ p: 3, textAlign: 'center' }}>
-                <FitnessCenterIcon color="primary" fontSize="large" />
+                <TrophyOutlined style={{ fontSize: 36, color: '#1976d2' }} />
                 <Typography variant="h6">Promedio de Total</Typography>
                 <Typography variant="h5">{totalFppAvg} kg</Typography>
               </Paper>
@@ -155,6 +151,7 @@ const EstadisticasGenerales = () => {
 };
 
 export default EstadisticasGenerales;
+
 export const metadata = {
   title: 'Estadísticas Generales',
   description: 'Estadísticas Generales de Atletas y equipos'

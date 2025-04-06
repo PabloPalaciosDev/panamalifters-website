@@ -1,11 +1,9 @@
 import { useState } from 'react';
 import { Card, CardContent, Grid, Typography, Tabs, Tab, Box, Stack } from '@mui/material';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import ScoreIcon from '@mui/icons-material/Score';
-import CategoryIcon from '@mui/icons-material/Category';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import topsData from 'data/json/topsnacionales.json'; // ← ✅ CORRECTA IMPORTACIÓN DIRECTA
+
+import { CrownOutlined, CalendarOutlined, TagOutlined, TrophyOutlined, BarChartOutlined } from '@ant-design/icons';
+
+import topsData from 'data/json/topsnacionales.json';
 
 interface Atleta {
   nombre: string;
@@ -34,19 +32,20 @@ const TopsNacionales = () => {
             <CardContent>
               <Stack spacing={1}>
                 <Typography variant="h6" display="flex" alignItems="center" gap={1}>
-                  <EmojiEventsIcon /> #{index + 1} - {atleta.nombre}
+                  <CrownOutlined /> #{index + 1} - {atleta.nombre}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" display="flex" gap={1}>
-                  <CalendarTodayIcon fontSize="small" /> Edad: {atleta.edad}
+                  <CalendarOutlined style={{ fontSize: 16 }} /> Edad: {atleta.edad}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" display="flex" gap={1}>
-                  <CategoryIcon fontSize="small" /> {atleta.catedad} - Peso: {atleta.catpeso}
+                  <TagOutlined style={{ fontSize: 16 }} /> {atleta.catedad} - Peso: {atleta.catpeso}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" display="flex" gap={1}>
-                  <FitnessCenterIcon fontSize="small" /> Total FPP: {atleta.totalfpp}
+                  <TrophyOutlined style={{ fontSize: 16 }} /> Total FPP: {atleta.totalfpp}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" display="flex" gap={1}>
-                  <ScoreIcon fontSize="small" /> IPF: {atleta.ipfpoints} | Wilks: {atleta.wilkspoints} | Dots: {atleta.dotspints}
+                  <BarChartOutlined style={{ fontSize: 16 }} /> IPF: {atleta.ipfpoints} | Wilks: {atleta.wilkspoints} | Dots:{' '}
+                  {atleta.dotspints}
                 </Typography>
               </Stack>
             </CardContent>

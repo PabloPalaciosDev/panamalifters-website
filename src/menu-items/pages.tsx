@@ -1,15 +1,17 @@
 // third-party
 import { FormattedMessage } from 'react-intl';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import Groups2Icon from '@mui/icons-material/Groups2';
-import LeaderboardIcon from '@mui/icons-material/Leaderboard';
-import SportsScoreIcon from '@mui/icons-material/SportsScore';
+import { TrophyOutlined, TeamOutlined, BarChartOutlined, FlagOutlined } from '@ant-design/icons';
 
 // type
 import type { NavItemType } from 'types/menu';
 
 // icons
-const icons = { FitnessCenterIcon, Groups2Icon, LeaderboardIcon, SportsScoreIcon };
+const icons = {
+  TrophyOutlined, // para representar entrenamiento o atletas
+  TeamOutlined, // para grupos o equipos
+  BarChartOutlined, // para rankings o top
+  FlagOutlined // para récords o logros (comentado)
+};
 
 // ==============================|| MENU ITEMS - PAGES ||============================== //
 
@@ -23,7 +25,7 @@ const pages: NavItemType = {
       title: <FormattedMessage id="Atletas" />,
       type: 'item',
       url: '/atletas',
-      icon: icons.FitnessCenterIcon,
+      icon: icons.TrophyOutlined,
       breadcrumbs: true
     },
     {
@@ -31,7 +33,7 @@ const pages: NavItemType = {
       title: <FormattedMessage id="Equipos" />,
       type: 'item',
       url: '/equipos',
-      icon: icons.Groups2Icon,
+      icon: icons.TeamOutlined,
       breadcrumbs: true
     },
     {
@@ -39,7 +41,7 @@ const pages: NavItemType = {
       title: <FormattedMessage id="Tops Nacionales" />,
       type: 'item',
       url: '/top-nacional',
-      icon: icons.LeaderboardIcon,
+      icon: icons.BarChartOutlined,
       breadcrumbs: true
     }
     /*
@@ -48,10 +50,10 @@ const pages: NavItemType = {
       title: <FormattedMessage id="Records" />,
       type: 'item',
       url: '/records-actuales',
-      icon: icons.SportsScoreIcon,
+      icon: icons.FlagOutlined,
       breadcrumbs: true
     }
-      */
+    */
   ]
 };
 

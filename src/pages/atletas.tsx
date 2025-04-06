@@ -1,13 +1,18 @@
 import { useState } from 'react';
 import { Card, CardContent, Select, MenuItem, FormControl, InputLabel, Grid, Typography, Stack } from '@mui/material';
-import PersonIcon from '@mui/icons-material/Person';
-import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
-import GroupIcon from '@mui/icons-material/Group';
-import ScoreIcon from '@mui/icons-material/Score';
-import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
-import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
-import CategoryIcon from '@mui/icons-material/Category';
-import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+
+// Reemplazo de íconos con Ant Design
+import {
+  UserOutlined,
+  TrophyOutlined,
+  TeamOutlined,
+  BarChartOutlined,
+  CalendarOutlined,
+  CrownOutlined,
+  TagOutlined,
+  IdcardOutlined
+} from '@ant-design/icons';
+
 import atletasJson from 'data/json/perfilatletas.json';
 
 interface Atleta {
@@ -23,9 +28,9 @@ interface Atleta {
 }
 
 const getMedalIcon = (place: number) => {
-  if (place === 1) return <EmojiEventsIcon sx={{ color: '#FFD700' }} titleAccess="Oro" />;
-  if (place === 2) return <EmojiEventsIcon sx={{ color: '#C0C0C0' }} titleAccess="Plata" />;
-  if (place === 3) return <EmojiEventsIcon sx={{ color: '#CD7F32' }} titleAccess="Bronce" />;
+  if (place === 1) return <CrownOutlined style={{ color: '#FFD700' }} title="Oro" />;
+  if (place === 2) return <CrownOutlined style={{ color: '#C0C0C0' }} title="Plata" />;
+  if (place === 3) return <CrownOutlined style={{ color: '#CD7F32' }} title="Bronce" />;
   return null;
 };
 
@@ -68,37 +73,37 @@ const Atletas: React.FC = () => {
       </Grid>
 
       <Grid container spacing={3}>
-        {filtered.map((atleta, index) => (
+        {filtered.map((atleta) => (
           <Grid item xs={12} sm={6} md={5} lg={4} key={atleta.nombre}>
             <Card elevation={3} sx={{ borderRadius: 4 }}>
               <CardContent>
                 <Stack spacing={1}>
                   <Typography variant="h6" component="div" display="flex" alignItems="center" gap={1}>
-                    <PersonIcon /> {atleta.nombre} {getMedalIcon(atleta.place)}
+                    <UserOutlined /> {atleta.nombre} {getMedalIcon(atleta.place)}
                   </Typography>
 
                   <Typography variant="body2" color="text.secondary" display="flex" alignItems="center" gap={1}>
-                    <CategoryIcon /> Peso: <strong>{atleta.catpeso}</strong>
+                    <TagOutlined /> Peso: <strong>{atleta.catpeso}</strong>
                   </Typography>
 
                   <Typography variant="body2" color="text.secondary" display="flex" alignItems="center" gap={1}>
-                    <EmojiPeopleIcon /> Categoría: <strong>{atleta.catedad}</strong>
+                    <IdcardOutlined /> Categoría: <strong>{atleta.catedad}</strong>
                   </Typography>
 
                   <Typography variant="body2" color="text.secondary" display="flex" alignItems="center" gap={1}>
-                    <FitnessCenterIcon /> Total FPP: <strong>{atleta.totalfpp}</strong>
+                    <TrophyOutlined /> Total FPP: <strong>{atleta.totalfpp}</strong>
                   </Typography>
 
                   <Typography variant="body2" color="text.secondary" display="flex" alignItems="center" gap={1}>
-                    <GroupIcon /> Equipo: <strong>{atleta.team}</strong>
+                    <TeamOutlined /> Equipo: <strong>{atleta.team}</strong>
                   </Typography>
 
                   <Typography variant="body2" color="text.secondary" display="flex" alignItems="center" gap={1}>
-                    <ScoreIcon /> IPF Points: <strong>{atleta.ipfpoints}</strong>
+                    <BarChartOutlined /> IPF Points: <strong>{atleta.ipfpoints}</strong>
                   </Typography>
 
                   <Typography variant="body2" color="text.secondary" display="flex" alignItems="center" gap={1}>
-                    <CalendarTodayIcon /> Edad: <strong>{atleta.edad}</strong>
+                    <CalendarOutlined /> Edad: <strong>{atleta.edad}</strong>
                   </Typography>
                 </Stack>
               </CardContent>

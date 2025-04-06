@@ -4,13 +4,13 @@
 import { FormattedMessage } from 'react-intl';
 
 // assets
-import QueryStatsIcon from '@mui/icons-material/QueryStats';
+import { LineChartOutlined } from '@ant-design/icons';
 
 // type
 import type { NavItemType } from 'types/menu';
 
 // icons
-const icons = { QueryStatsIcon };
+const icons = { LineChartOutlined };
 
 // ==============================|| MENU ITEMS - SAMPLE PAGE ||============================== //
 
@@ -19,7 +19,7 @@ const samplePage: NavItemType = {
   title: <FormattedMessage id="Estadísticas" />,
   type: 'group',
   url: '/dashboard',
-  icon: icons.QueryStatsIcon
+  icon: icons.LineChartOutlined
 };
 
 export default samplePage;
