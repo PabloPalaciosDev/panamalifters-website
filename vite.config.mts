@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
         // },
       ]
     },
-    base: API_URL.startsWith('/') ? API_URL : `/${API_URL}/`,
+    base: API_URL,
     plugins: [react(), tsconfigPaths()]
   };
 });
