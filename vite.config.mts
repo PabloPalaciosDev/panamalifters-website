@@ -4,7 +4,7 @@ import tsconfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
-  const API_URL = `${env.VITE_APP_BASE_NAME}`;
+  const API_URL = env.VITE_APP_BASE_NAME || '/';
   const PORT = 3000;
 
   return {
@@ -39,7 +39,7 @@ export default defineConfig(({ mode }) => {
         // },
       ]
     },
-    base: API_URL,
+    base: API_URL.startsWith('/') ? API_URL : `/${API_URL}/`,
     plugins: [react(), tsconfigPaths()]
   };
 });
