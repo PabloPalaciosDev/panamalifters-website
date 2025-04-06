@@ -1,10 +1,10 @@
-import { useState, MouseEvent } from 'react';
+import { useState, type MouseEvent } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 // material-ui
-import { styled, useTheme, Theme } from '@mui/material/styles';
+import { styled, useTheme, type Theme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import IconButton, { type IconButtonProps } from '@mui/material/IconButton';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
@@ -27,21 +27,21 @@ interface ExpandMoreProps extends IconButtonProps {
   drawerOpen: boolean;
 }
 
-const ExpandMore = styled(IconButton, { shouldForwardProp: (prop) => prop !== 'theme' && prop !== 'expand' && prop !== 'drawerOpen' })(
-  ({ theme, expand, drawerOpen }: ExpandMoreProps) => ({
-    transform: !expand ? 'rotate(0deg)' : 'rotate(-90deg)',
-    marginLeft: 'auto',
-    color: theme.palette.secondary.dark,
-    transition: theme.transitions.create('transform', {
-      duration: theme.transitions.duration.shortest
-    }),
-    ...(!drawerOpen && {
-      opacity: 0,
-      width: 50,
-      height: 50
-    })
+const ExpandMore = styled(IconButton, {
+  shouldForwardProp: (prop) => prop !== 'theme' && prop !== 'expand' && prop !== 'drawerOpen'
+})(({ theme, expand, drawerOpen }: ExpandMoreProps) => ({
+  transform: !expand ? 'rotate(0deg)' : 'rotate(-90deg)',
+  marginLeft: 'auto',
+  color: theme.palette.secondary.dark,
+  transition: theme.transitions.create('transform', {
+    duration: theme.transitions.duration.shortest
+  }),
+  ...(!drawerOpen && {
+    opacity: 0,
+    width: 50,
+    height: 50
   })
-);
+}));
 
 // ==============================|| DRAWER - USER ||============================== //
 
@@ -77,7 +77,14 @@ export default function NavUser() {
   };
 
   return (
-    <Box sx={{ p: 1.25, px: !drawerOpen ? 1.25 : 3, borderTop: '2px solid', borderTopColor: 'divider' }}>
+    <Box
+      sx={{
+        p: 1.25,
+        px: !drawerOpen ? 1.25 : 3,
+        borderTop: '2px solid',
+        borderTopColor: 'divider'
+      }}
+    >
       <List disablePadding>
         <ListItem
           disablePadding
@@ -96,7 +103,11 @@ export default function NavUser() {
               <RightOutlined style={{ fontSize: '0.625rem' }} />
             </ExpandMore>
           }
-          sx={{ '& .MuiListItemSecondaryAction-root': { right: !drawerOpen ? -20 : -16 } }}
+          sx={{
+            '& .MuiListItemSecondaryAction-root': {
+              right: !drawerOpen ? -20 : -16
+            }
+          }}
         >
           <ListItemAvatar>
             <Avatar alt="Avatar" src={avatar1} sx={{ ...(drawerOpen && { width: 46, height: 46 }) }} />
@@ -104,23 +115,6 @@ export default function NavUser() {
           <ListItemText primary={user?.name} secondary="UI/UX Designer" />
         </ListItem>
       </List>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        MenuListProps={{ 'aria-labelledby': 'basic-button' }}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'bottom', horizontal: 'right' }}
-      >
-        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-        <MenuItem component={Link} to="#" onClick={handleClose}>
-          Profile
-        </MenuItem>
-        <MenuItem component={Link} to="#" onClick={handleClose}>
-          My account
-        </MenuItem>
-      </Menu>
     </Box>
   );
 }

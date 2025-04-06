@@ -1,8 +1,8 @@
-import { ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 
 // material-ui
 import StyledEngineProvider from '@mui/material/StyledEngineProvider';
-import { createTheme, ThemeOptions, ThemeProvider, Theme, TypographyVariantsOptions } from '@mui/material/styles';
+import { createTheme, type ThemeOptions, ThemeProvider, type Theme, type TypographyVariantsOptions } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 
 // project import
@@ -13,7 +13,7 @@ import CustomShadows from './shadows';
 import componentsOverride from './overrides';
 
 // types
-import { CustomShadowProps } from 'types/theme';
+import type { CustomShadowProps } from 'types/theme';
 
 // types
 type ThemeCustomizationProps = {

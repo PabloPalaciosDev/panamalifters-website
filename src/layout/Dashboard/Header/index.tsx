@@ -1,9 +1,9 @@
-import { ReactNode, useMemo } from 'react';
+import { type ReactNode, useMemo } from 'react';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
-import AppBar, { AppBarProps } from '@mui/material/AppBar';
+import AppBar, { type AppBarProps } from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 
 // project import
@@ -46,7 +46,11 @@ export default function Header() {
           edge="start"
           color="secondary"
           variant="light"
-          sx={{ color: 'text.primary', bgcolor: drawerOpen ? 'transparent' : iconBackColor, ml: { xs: 0, lg: -2 } }}
+          sx={{
+            color: 'text.primary',
+            bgcolor: drawerOpen ? 'transparent' : iconBackColor,
+            ml: { xs: 0, lg: -2 }
+          }}
         >
           {!drawerOpen ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
         </IconButton>
@@ -61,12 +65,15 @@ export default function Header() {
     color: 'inherit',
     elevation: 0,
     sx: {
-      borderBottom: '1px solid',
+      borderBottom: 'px solid',
       borderBottomColor: 'divider',
       zIndex: 1200,
       width: isHorizontal
         ? '100%'
-        : { xs: '100%', lg: drawerOpen ? `calc(100% - ${DRAWER_WIDTH}px)` : `calc(100% - ${MINI_DRAWER_WIDTH}px)` }
+        : {
+            xs: '100%',
+            lg: drawerOpen ? `calc(100% - ${DRAWER_WIDTH}px)` : `calc(100% - ${MINI_DRAWER_WIDTH}px)`
+          }
     }
   };
 

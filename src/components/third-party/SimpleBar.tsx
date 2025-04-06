@@ -1,12 +1,12 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 
 // material-ui
-import { alpha, styled, Theme } from '@mui/material/styles';
+import { alpha, styled, type Theme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import { MUIStyledCommonProps } from '@mui/system';
+import type { MUIStyledCommonProps } from '@mui/system';
 
 // third-party
-import SimpleBar, { Props } from 'simplebar-react';
+import SimpleBar, { type Props } from 'simplebar-react';
 import { BrowserView, MobileView } from 'react-device-detect';
 
 // project-import

@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 
 // material-ui
-import { Theme } from '@mui/material/styles';
+import type { Theme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -54,7 +54,8 @@ export default function MainDrawer({ window }: Props) {
               borderRight: '1px solid',
               borderRightColor: 'divider',
               backgroundImage: 'none',
-              boxShadow: 'inherit'
+              boxShadow: 'inherit',
+              backgroundColor: '#153A4B'
             }
           }}
         >

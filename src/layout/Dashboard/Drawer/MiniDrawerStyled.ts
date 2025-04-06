@@ -1,5 +1,5 @@
 // material-ui
-import { styled, Theme, CSSObject } from '@mui/material/styles';
+import { styled, type Theme, type CSSObject } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
 
 // project import
@@ -15,7 +15,8 @@ const openedMixin = (theme: Theme) =>
       duration: theme.transitions.duration.enteringScreen
     }),
     overflowX: 'hidden',
-    boxShadow: theme.palette.mode === ThemeMode.DARK ? theme.customShadows.z1 : 'none'
+    boxShadow: theme.palette.mode === ThemeMode.DARK ? theme.customShadows.z1 : 'none',
+    backgroundColor: '#153A4B' // ✅ ← aquí el color
   }) as CSSObject;
 
 const closedMixin = (theme: Theme) =>
@@ -27,12 +28,15 @@ const closedMixin = (theme: Theme) =>
     overflowX: 'hidden',
     width: theme.spacing(7.5),
     borderRight: 'none',
-    boxShadow: theme.customShadows.z1
+    boxShadow: theme.customShadows.z1,
+    backgroundColor: '#153A4B' // ✅ ← también aquí si quieres color en versión contraída
   }) as CSSObject;
 
 // ==============================|| DRAWER - MINI STYLED ||============================== //
 
-const MiniDrawerStyled = styled(Drawer, { shouldForwardProp: (prop) => prop !== 'open' })(({ theme, open }) => ({
+const MiniDrawerStyled = styled(Drawer, {
+  shouldForwardProp: (prop) => prop !== 'open'
+})(({ theme, open }) => ({
   width: DRAWER_WIDTH,
   flexShrink: 0,
   whiteSpace: 'nowrap',

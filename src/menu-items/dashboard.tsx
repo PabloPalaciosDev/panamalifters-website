@@ -4,22 +4,22 @@
 import { FormattedMessage } from 'react-intl';
 
 // assets
-import ChromeOutlined from '@ant-design/icons/ChromeOutlined';
+import QueryStatsIcon from '@mui/icons-material/QueryStats';
 
 // type
-import { NavItemType } from 'types/menu';
+import type { NavItemType } from 'types/menu';
 
 // icons
-const icons = { ChromeOutlined };
+const icons = { QueryStatsIcon };
 
 // ==============================|| MENU ITEMS - SAMPLE PAGE ||============================== //
 
 const samplePage: NavItemType = {
-  id: 'sample-page',
-  title: <FormattedMessage id="sample-page" />,
+  id: 'Dashboard',
+  title: <FormattedMessage id="Estadísticas" />,
   type: 'group',
-  url: '/sample-page',
-  icon: icons.ChromeOutlined
+  url: '/dashboard',
+  icon: icons.QueryStatsIcon
 };
 
 export default samplePage;

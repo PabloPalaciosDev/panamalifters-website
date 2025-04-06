@@ -1,14 +1,14 @@
 // material-ui
-import { Theme } from '@mui/material/styles';
+import type { Theme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
 
 // project import
-import Search from './Search';
-import Message from './Message';
-import Profile from './Profile';
-import Notification from './Notification';
-import FullScreen from './FullScreen';
+//import Search from './Search';
+//import Message from './Message';
+//import Profile from './Profile';
+//import Notification from './Notification';
+//import FullScreen from './FullScreen';
 import MobileSection from './MobileSection';
 
 import useConfig from 'hooks/useConfig';
@@ -25,13 +25,7 @@ export default function HeaderContent() {
   return (
     <>
       {menuOrientation === MenuOrientation.HORIZONTAL && !downLG && <DrawerHeader open={true} />}
-      {!downLG && <Search />}
       {downLG && <Box sx={{ width: '100%', ml: 1 }} />}
-
-      <Notification />
-      <Message />
-      {!downLG && <FullScreen />}
-      {!downLG && <Profile />}
       {downLG && <MobileSection />}
     </>
   );

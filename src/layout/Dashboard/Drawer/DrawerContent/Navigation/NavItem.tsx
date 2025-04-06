@@ -20,7 +20,7 @@ import useConfig from 'hooks/useConfig';
 import { handlerDrawerOpen, useGetMenuMaster } from 'api/menu';
 
 // types
-import { LinkTarget, NavItemType } from 'types/menu';
+import type { LinkTarget, NavItemType } from 'types/menu';
 
 interface Props {
   item: NavItemType;
@@ -57,7 +57,7 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
   const itemIcon = item.icon ? (
     <Icon
       style={{
-        fontSize: drawerOpen ? '1rem' : '1.25rem',
+        fontSize: drawerOpen ? '1.5rem' : '1.75rem',
         ...(menuOrientation === MenuOrientation.HORIZONTAL && isParents && { fontSize: 20, stroke: '1.5' })
       }}
     />
@@ -68,8 +68,8 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
   const { pathname } = useLocation();
   const isSelected = !!matchPath({ path: item?.link ? item.link : item.url!, end: false }, pathname);
 
-  const textColor = mode === ThemeMode.DARK ? 'grey.400' : 'text.primary';
-  const iconSelectedColor = mode === ThemeMode.DARK && drawerOpen ? 'text.primary' : 'primary.main';
+  const textColor = '#FFFFFF';
+  const borderBottom = ' 2px solid #FFFFFF';
 
   return (
     <>
@@ -85,20 +85,21 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
               zIndex: 1201,
               pl: drawerOpen ? `${level * 28}px` : 1.5,
               py: !drawerOpen && level === 1 ? 1.25 : 1,
-              ...(drawerOpen && {
-                '&:hover': { bgcolor: mode === ThemeMode.DARK ? 'divider' : 'primary.lighter' },
-                '&.Mui-selected': {
-                  bgcolor: mode === ThemeMode.DARK ? 'divider' : 'primary.lighter',
-                  borderRight: '2px solid',
-                  borderColor: 'primary.main',
-                  color: iconSelectedColor,
-                  '&:hover': { color: iconSelectedColor, bgcolor: mode === ThemeMode.DARK ? 'divider' : 'primary.lighter' }
+              color: textColor,
+              bgcolor: 'transparent',
+              borderBottom: isSelected ? borderBottom : 'none',
+              '&:hover': {
+                bgcolor: 'transparent',
+                borderBottom: borderBottom
+              },
+              '&.Mui-selected': {
+                bgcolor: 'transparent',
+                borderBottom: borderBottom,
+                color: textColor,
+                '& .MuiListItemIcon-root': {
+                  color: textColor
                 }
-              }),
-              ...(!drawerOpen && {
-                '&:hover': { bgcolor: 'transparent' },
-                '&.Mui-selected': { '&:hover': { bgcolor: 'transparent' }, bgcolor: 'transparent' }
-              })
+              }
             }}
             onClick={() => itemHandler()}
           >
@@ -106,22 +107,23 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
               <ListItemIcon
                 sx={{
                   minWidth: 28,
-                  color: isSelected ? iconSelectedColor : textColor,
+                  color: textColor,
                   ...(!drawerOpen && {
                     borderRadius: 1.5,
                     width: 36,
                     height: 36,
                     alignItems: 'center',
                     justifyContent: 'center',
+                    bgcolor: 'transparent',
                     '&:hover': {
-                      bgcolor: mode === ThemeMode.DARK ? 'secondary.light' : 'secondary.lighter'
+                      bgcolor: 'transparent'
                     }
                   }),
                   ...(!drawerOpen &&
                     isSelected && {
-                      bgcolor: mode === ThemeMode.DARK ? 'primary.900' : 'primary.lighter',
+                      bgcolor: 'transparent',
                       '&:hover': {
-                        bgcolor: mode === ThemeMode.DARK ? 'primary.darker' : 'primary.lighter'
+                        bgcolor: 'transparent'
                       }
                     })
                 }}
@@ -132,7 +134,7 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
             {(drawerOpen || (!drawerOpen && level !== 1)) && (
               <ListItemText
                 primary={
-                  <Typography variant="h6" sx={{ color: isSelected ? iconSelectedColor : textColor }}>
+                  <Typography variant="h5" sx={{ color: textColor }}>
                     {item.title}
                   </Typography>
                 }
@@ -180,7 +182,9 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
                     ml: 1,
                     color: 'secondary.dark',
                     borderColor: isSelected ? 'primary.light' : 'secondary.light',
-                    '&:hover': { borderColor: isSelected ? 'primary.main' : 'secondary.main' }
+                    '&:hover': {
+                      borderColor: isSelected ? 'primary.main' : 'secondary.main'
+                    }
                   }}
                 >
                   <ActionIcon style={{ fontSize: '0.625rem' }} />
@@ -213,7 +217,11 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
                   justifyContent: 'flex-start',
                   '&:hover': { bgcolor: 'transparent' }
                 }),
-                ...(!drawerOpen && isSelected && { bgcolor: 'transparent', '&:hover': { bgcolor: 'transparent' } })
+                ...(!drawerOpen &&
+                  isSelected && {
+                    bgcolor: 'transparent',
+                    '&:hover': { bgcolor: 'transparent' }
+                  })
               }}
             >
               {itemIcon}
@@ -230,7 +238,11 @@ export default function NavItem({ item, level, isParents = false, setSelectedID 
                   justifyContent: 'flex-start',
                   '&:hover': { bgcolor: 'transparent' }
                 }),
-                ...(!drawerOpen && isSelected && { bgcolor: 'transparent', '&:hover': { bgcolor: 'transparent' } })
+                ...(!drawerOpen &&
+                  isSelected && {
+                    bgcolor: 'transparent',
+                    '&:hover': { bgcolor: 'transparent' }
+                  })
               }}
             >
               <Dot size={4} color={isSelected ? 'primary' : 'secondary'} />

@@ -1,4 +1,4 @@
-import { CSSProperties, ReactElement, useEffect, useState } from 'react';
+import { type CSSProperties, type ReactElement, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 // material-ui
@@ -19,8 +19,8 @@ import HomeOutlined from '@ant-design/icons/HomeOutlined';
 import HomeFilled from '@ant-design/icons/HomeFilled';
 
 // types
-import { OverrideIcon } from 'types/root';
-import { NavItemType } from 'types/menu';
+import type { OverrideIcon } from 'types/root';
+import type { NavItemType } from 'types/menu';
 
 interface BreadcrumbLinkProps {
   title: string;
@@ -80,7 +80,7 @@ export default function Breadcrumbs({
     color: theme.palette.secondary.main
   };
 
-  let customLocation = location.pathname;
+  const customLocation = location.pathname;
 
   useEffect(() => {
     navigation?.items?.map((menu: NavItemType) => {
@@ -163,7 +163,7 @@ export default function Breadcrumbs({
               <Typography component={Link} to="/" color="text.secondary" variant="h6" sx={{ textDecoration: 'none' }}>
                 {icons && <HomeOutlined style={iconSX} />}
                 {icon && !icons && <HomeFilled style={{ ...iconSX, marginRight: 0 }} />}
-                {(!icon || icons) && 'Home'}
+                {(!icon || icons) && 'Inicio /'}
               </Typography>
               {mainContent}
             </MuiBreadcrumbs>
@@ -196,7 +196,7 @@ export default function Breadcrumbs({
         <Typography component={Link} to="/" color="text.secondary" variant="h6" sx={{ textDecoration: 'none' }}>
           {icons && <HomeOutlined style={iconSX} />}
           {icon && !icons && <HomeFilled style={{ ...iconSX, marginRight: 0 }} />}
-          {(!icon || icons) && 'Home'}
+          {(!icon || icons) && 'Inicio'}
         </Typography>
         {mainContent}
         {itemContent}

@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from 'react';
 
 // material-ui
-import { Theme } from '@mui/material/styles';
+import type { Theme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import Box from '@mui/material/Box';
 import Divider from '@mui/material/Divider';
@@ -18,7 +18,7 @@ import { HORIZONTAL_MAX_ITEM, MenuOrientation } from 'config';
 import { useGetMenuMaster } from 'api/menu';
 
 // types
-import { NavItemType } from 'types/menu';
+import type { NavItemType } from 'types/menu';
 
 // ==============================|| DRAWER CONTENT - NAVIGATION ||============================== //
 
@@ -31,7 +31,9 @@ export default function Navigation() {
   const [selectedID, setSelectedID] = useState<string | undefined>('');
   const [selectedItems, setSelectedItems] = useState<string | undefined>('');
   const [selectedLevel, setSelectedLevel] = useState<number>(0);
-  const [menuItems, setMenuItems] = useState<{ items: NavItemType[] }>({ items: [] });
+  const [menuItems, setMenuItems] = useState<{ items: NavItemType[] }>({
+    items: []
+  });
 
   useLayoutEffect(() => {
     setMenuItems(menuItem);

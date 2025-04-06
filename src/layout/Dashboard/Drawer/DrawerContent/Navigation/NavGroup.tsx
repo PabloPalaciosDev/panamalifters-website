@@ -34,7 +34,7 @@ import GroupOutlined from '@ant-design/icons/GroupOutlined';
 import RightOutlined from '@ant-design/icons/RightOutlined';
 
 // types
-import { NavItemType } from 'types/menu';
+import type { NavItemType } from 'types/menu';
 
 // ==============================|| NAVIGATION - LIST GROUP ||============================== //
 
@@ -274,7 +274,7 @@ export default function NavGroup({
               {item.title ? (
                 drawerOpen && (
                   <Box sx={{ pl: 3, mb: 1.5 }}>
-                    <Typography variant="subtitle2" color="text.secondary">
+                    <Typography variant="subtitle2" color="white">
                       {item.title}
                     </Typography>
                     {item.caption && (
@@ -297,7 +297,14 @@ export default function NavGroup({
         <List>
           <ListItemButton
             selected={isSelected}
-            sx={{ p: 1, my: 0.5, mr: 1, display: 'flex', alignItems: 'center', '&.Mui-selected': { bgcolor: 'transparent' } }}
+            sx={{
+              p: 1,
+              my: 0.5,
+              mr: 1,
+              display: 'flex',
+              alignItems: 'center',
+              '&.Mui-selected': { bgcolor: 'transparent' }
+            }}
             onMouseEnter={handleClick}
             onClick={handleClick}
             onMouseLeave={handleClose}
@@ -325,10 +332,24 @@ export default function NavGroup({
               <PopperStyled id={popperId} open={openMini} anchorEl={anchorEl} placement="bottom-start" style={{ zIndex: 2001 }}>
                 {({ TransitionProps }) => (
                   <Transitions in={openMini} {...TransitionProps}>
-                    <Paper sx={{ mt: 0.5, py: 1.25, boxShadow: theme.shadows[8], backgroundImage: 'none' }}>
+                    <Paper
+                      sx={{
+                        mt: 0.5,
+                        py: 1.25,
+                        boxShadow: theme.shadows[8],
+                        backgroundImage: 'none'
+                      }}
+                    >
                       <ClickAwayListener onClickAway={handleClose}>
                         <>
-                          <SimpleBar sx={{ minWidth: 200, overflowX: 'hidden', overflowY: 'auto', maxHeight: 'calc(100vh - 170px)' }}>
+                          <SimpleBar
+                            sx={{
+                              minWidth: 200,
+                              overflowX: 'hidden',
+                              overflowY: 'auto',
+                              maxHeight: 'calc(100vh - 170px)'
+                            }}
+                          >
                             {currentItem.id !== lastItemId ? items : moreItems}
                           </SimpleBar>
                         </>
