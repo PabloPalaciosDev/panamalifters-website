@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Box, Typography, Grid, Paper, MenuItem, FormControl, InputLabel, Select } from '@mui/material';
 import PeopleAltIcon from '@mui/icons-material/PeopleAlt';
 import GroupsIcon from '@mui/icons-material/Groups';
@@ -7,15 +7,16 @@ import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import FemaleIcon from '@mui/icons-material/Female';
 import MaleIcon from '@mui/icons-material/Male';
 
+import atletasData from 'data/json/perfilatletas.json';
+import equiposData from 'data/json/equipospowerlifting.json';
+import topsData from 'data/json/topsnacionales.json';
+
 interface Atleta {
   catsex: string;
   totalfpp: number;
   ipfpoints: number;
   catpeso?: string;
   catedad?: string;
-  squat?: number;
-  bench?: number;
-  deadlift?: number;
 }
 
 interface Club {
@@ -28,24 +29,13 @@ interface Tops {
 }
 
 const EstadisticasGenerales = () => {
-  const [atletas, setAtletas] = useState<Atleta[]>([]);
-  const [equipos, setequipos] = useState<Club[]>([]);
-  const [tops, setTops] = useState<Tops>({ MASC: [], FEM: [] });
   const [catSex, setCatSex] = useState<string>('MALE');
   const [catPeso, setCatPeso] = useState<string>('');
   const [catEdad, setCatEdad] = useState<string>('');
 
-  useEffect(() => {
-    Promise.all([
-      fetch('src/data/json/perfilatletas.json').then((res) => res.json()),
-      fetch('src/data/json/equipospowerlifting.json').then((res) => res.json()),
-      fetch('src/data/json/topsnacionales.json').then((res) => res.json())
-    ]).then(([atletasData, equiposData, topsData]) => {
-      setAtletas(atletasData);
-      setequipos(equiposData);
-      setTops(topsData);
-    });
-  }, []);
+  const atletas = atletasData as Atleta[];
+  const equipos = equiposData as Club[];
+  const tops = topsData as Tops;
 
   const totalAtletas = atletas.length;
   const totalequipos = equipos.length;

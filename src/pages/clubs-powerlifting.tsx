@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, CardMedia, Grid, Typography, Box, Stack } from '@mui/material';
 import GroupsIcon from '@mui/icons-material/Groups';
 import PersonIcon from '@mui/icons-material/Person';
+import equiposJson from 'data/json/equipospowerlifting.json';
 
 interface Club {
   nombreClub: string;
@@ -9,14 +10,8 @@ interface Club {
   img?: string;
 }
 
-const equiposAtletismo: React.FC = () => {
-  const [equipos, setequipos] = useState<Club[]>([]);
-
-  useEffect(() => {
-    fetch('src/data/json/equipospowerlifting.json')
-      .then((res) => res.json())
-      .then((data) => setequipos(data));
-  }, []);
+const EquiposAtletismo: React.FC = () => {
+  const [equipos] = useState<Club[]>(equiposJson as Club[]);
 
   return (
     <Box sx={{ p: 2 }}>
@@ -43,4 +38,4 @@ const equiposAtletismo: React.FC = () => {
   );
 };
 
-export default equiposAtletismo;
+export default EquiposAtletismo;

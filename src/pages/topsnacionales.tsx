@@ -1,10 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, Grid, Typography, Tabs, Tab, Box, Stack } from '@mui/material';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
 import ScoreIcon from '@mui/icons-material/Score';
 import CategoryIcon from '@mui/icons-material/Category';
 import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import topsData from 'data/json/topsnacionales.json'; // ← ✅ CORRECTA IMPORTACIÓN DIRECTA
 
 interface Atleta {
   nombre: string;
@@ -22,14 +23,8 @@ interface Atleta {
 }
 
 const TopsNacionales = () => {
-  const [data, setData] = useState<{ MASC: Atleta[]; FEM: Atleta[] }>({ MASC: [], FEM: [] });
   const [tab, setTab] = useState(0);
-
-  useEffect(() => {
-    fetch('src/data/json/TopsNacionales.json')
-      .then((res) => res.json())
-      .then((json) => setData(json));
-  }, []);
+  const data = topsData as { MASC: Atleta[]; FEM: Atleta[] };
 
   const renderAtletas = (atletas: Atleta[]) => (
     <Grid container spacing={3}>
@@ -45,7 +40,7 @@ const TopsNacionales = () => {
                   <CalendarTodayIcon fontSize="small" /> Edad: {atleta.edad}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" display="flex" gap={1}>
-                  <CategoryIcon fontSize="small" /> Categoría: {atleta.catedad} - Peso: {atleta.catpeso}
+                  <CategoryIcon fontSize="small" /> {atleta.catedad} - Peso: {atleta.catpeso}
                 </Typography>
                 <Typography variant="body2" color="text.secondary" display="flex" gap={1}>
                   <FitnessCenterIcon fontSize="small" /> Total FPP: {atleta.totalfpp}

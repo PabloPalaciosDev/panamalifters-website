@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Card, CardContent, Select, MenuItem, FormControl, InputLabel, Grid, Typography, Stack } from '@mui/material';
 import PersonIcon from '@mui/icons-material/Person';
 import FitnessCenterIcon from '@mui/icons-material/FitnessCenter';
@@ -8,6 +8,7 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import EmojiEventsIcon from '@mui/icons-material/EmojiEvents';
 import CategoryIcon from '@mui/icons-material/Category';
 import EmojiPeopleIcon from '@mui/icons-material/EmojiPeople';
+import atletasJson from 'data/json/perfilatletas.json';
 
 interface Atleta {
   nombre: string;
@@ -29,15 +30,9 @@ const getMedalIcon = (place: number) => {
 };
 
 const Atletas: React.FC = () => {
-  const [atletas, setAtletas] = useState<Atleta[]>([]);
+  const [atletas] = useState<Atleta[]>(atletasJson as Atleta[]);
   const [catSex, setCatSex] = useState<string>('MALE');
   const [catPeso, setCatPeso] = useState<string>('');
-
-  useEffect(() => {
-    fetch('src/data/json/perfilatletas.json')
-      .then((res) => res.json())
-      .then((data) => setAtletas(data));
-  }, []);
 
   const filteredBySex = atletas.filter((a) => a.catsex === catSex);
   const uniquePesos = [...new Set(filteredBySex.map((a) => a.catpeso))];
