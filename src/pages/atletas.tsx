@@ -28,9 +28,9 @@ interface Atleta {
 }
 
 const getMedalIcon = (place: number) => {
-  if (place === 1) return <CrownOutlined style={{ color: '#FFD700' }} title="Oro" />;
-  if (place === 2) return <CrownOutlined style={{ color: '#C0C0C0' }} title="Plata" />;
-  if (place === 3) return <CrownOutlined style={{ color: '#CD7F32' }} title="Bronce" />;
+  if (place === 1) return <CrownOutlined style={{ color: '#FFD700', fontSize: '20px' }} title="Oro" />;
+  if (place === 2) return <CrownOutlined style={{ color: '#C0C0C0', fontSize: '20px' }} title="Plata" />;
+  if (place === 3) return <CrownOutlined style={{ color: '#CD7F32', fontSize: '20px' }} title="Bronce" />;
   return null;
 };
 
